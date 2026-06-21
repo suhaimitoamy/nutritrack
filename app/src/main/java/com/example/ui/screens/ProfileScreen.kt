@@ -28,13 +28,16 @@ fun ProfileScreen(viewModel: MainViewModel) {
     
     var isEditing by remember { mutableStateOf(false) }
     
-    var name by remember { mutableStateOf(userProfile?.name ?: "") }
-    var email by remember { mutableStateOf(userProfile?.email ?: "") }
     var target by remember { mutableStateOf(userProfile?.calorieTarget?.toString() ?: "1800") }
     var breakfastTime by remember { mutableStateOf(userProfile?.breakfastTime ?: "07:00") }
     var lunchTime by remember { mutableStateOf(userProfile?.lunchTime ?: "12:00") }
     var dinnerTime by remember { mutableStateOf(userProfile?.dinnerTime ?: "19:00") }
     var weightTime by remember { mutableStateOf(userProfile?.weightTime ?: "06:00") }
+    
+    var heightCm by remember { mutableStateOf(userProfile?.heightCm?.toString() ?: "165") }
+    var age by remember { mutableStateOf(userProfile?.age?.toString() ?: "25") }
+    var gender by remember { mutableStateOf(userProfile?.gender ?: "Pria") }
+    var dietGoal by remember { mutableStateOf(userProfile?.dietGoal ?: "Bertahan") }
     
     val context = LocalContext.current
     
@@ -47,6 +50,10 @@ fun ProfileScreen(viewModel: MainViewModel) {
             lunchTime = userProfile!!.lunchTime
             dinnerTime = userProfile!!.dinnerTime
             weightTime = userProfile!!.weightTime
+            heightCm = userProfile!!.heightCm.toString()
+            age = userProfile!!.age.toString()
+            gender = userProfile!!.gender
+            dietGoal = userProfile!!.dietGoal
         }
     }
     
@@ -81,6 +88,52 @@ fun ProfileScreen(viewModel: MainViewModel) {
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(value = email, onValueChange = { email = it }, label = { Text("Email") }, modifier = Modifier.fillMaxWidth())
                     Spacer(modifier = Modifier.height(8.dp))
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedTextField(value = heightCm, onValueChange = { heightCm = it }, label = { Text("Tinggi (cm)") }, modifier = Modifier.weight(1f), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
+                        OutlinedTextField(value = age, onValueChange = { age = it }, label = { Text("Usia") }, modifier = Modifier.weight(1f), keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    
+                    // Simple Gender toggle
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+                        Text("Gender:")
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(selected = gender == "Pria", onClick = { gender = "Pria" })
+                            Text("Pria")
+                        }
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(selected = gender == "Wanita", onClick = { gender = "Wanita" })
+                            Text("Wanita")
+                        }
+                    }
+                    
+                    // Simple Goal toggle
+                    Text("Tujuan Diet:", style = MaterialTheme.typography.bodySmall)
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+                        listOf("Turun", "Bertahan", "Naik").forEach { goal ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(selected = dietGoal == goal, onClick = { dietGoal = goal })
+                                Text(goal, style = MaterialTheme.typography.bodySmall)
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Button(onClick = {
+                        val w = currentWeightStr.toFloatOrNull() ?: 60f
+                        val h = heightCm.toIntOrNull() ?: 165
+                        val a = age.toIntOrNull() ?: 25
+                        val bmr = if(gender == "Pria") (10 * w) + (6.25 * h) - (5 * a) + 5 else (10 * w) + (6.25 * h) - (5 * a) - 161
+                        val tdee = bmr * 1.375
+                        val idealCal = when(dietGoal) {
+                            "Turun" -> tdee - 500
+                            "Naik" -> tdee + 500
+                            else -> tdee
+                        }
+                        target = idealCal.toInt().toString()
+                    }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)) {
+                        Text("Hitung Kalori Ideal")
+                    }
+
                     OutlinedTextField(
                         value = target,
                         onValueChange = { target = it },
@@ -102,7 +155,11 @@ fun ProfileScreen(viewModel: MainViewModel) {
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(
                             onClick = {
-                                viewModel.saveUserProfile(name, email, target.toIntOrNull() ?: 1800, breakfastTime, lunchTime, dinnerTime, weightTime)
+                                viewModel.saveUserProfile(
+                                    name, email, target.toIntOrNull() ?: 1800, 
+                                    breakfastTime, lunchTime, dinnerTime, weightTime,
+                                    heightCm.toIntOrNull() ?: 165, age.toIntOrNull() ?: 25, gender, dietGoal
+                                )
                                 isEditing = false
                                 
                                 // Schedule Alarms
@@ -140,6 +197,31 @@ fun ProfileScreen(viewModel: MainViewModel) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text("Berat Saat Ini", color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
                             Text("$currentWeightStr kg", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                        }
+                    }
+                    
+                    val w = currentWeightStr.toFloatOrNull() ?: 0f
+                    val h = userProfile?.heightCm?.toFloat() ?: 165f
+                    val bmi = if(w > 0 && h > 0) w / ((h/100) * (h/100)) else 0f
+                    val bmiCategory = when {
+                        bmi < 18.5 -> "Kurus"
+                        bmi < 25 -> "Normal"
+                        bmi < 30 -> "Gemuk"
+                        else -> "Obesitas"
+                    }
+                    
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)) {
+                        Row(modifier = Modifier.padding(16.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Column {
+                                Text("BMI Saat Ini", style = MaterialTheme.typography.labelMedium)
+                                Text(if(bmi > 0) String.format(java.util.Locale.US, "%.1f", bmi) else "-", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                                Text(if(bmi > 0) bmiCategory else "-", color = MaterialTheme.colorScheme.secondary, fontWeight = FontWeight.SemiBold)
+                            }
+                            Column(horizontalAlignment = Alignment.End) {
+                                Text("Tujuan", style = MaterialTheme.typography.labelMedium)
+                                Text(userProfile?.dietGoal ?: "-", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                            }
                         }
                     }
                     

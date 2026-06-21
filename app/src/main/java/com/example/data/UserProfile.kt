@@ -12,5 +12,11 @@ data class UserProfile(
     val breakfastTime: String = "07:00",
     val lunchTime: String = "12:00",
     val dinnerTime: String = "19:00",
-    val weightTime: String = "06:00"
+    val weightTime: String = "06:00",
+    val heightCm: Int = 165,
+    val age: Int = 25,
+    val gender: String = "Pria", // "Pria" or "Wanita"
+    val dietGoal: String = "Bertahan", // "Turun", "Bertahan", "Naik"
+    val isFasting: Boolean = false,
+    val fastingStartTime: Long = 0L
 )

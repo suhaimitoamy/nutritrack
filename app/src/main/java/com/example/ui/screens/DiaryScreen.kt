@@ -12,6 +12,9 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.LocalDrink
+import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,13 +35,22 @@ import java.util.*
 fun DiaryScreen(viewModel: MainViewModel) {
     val userProfile by viewModel.userProfile.collectAsStateWithLifecycle()
     val foods by viewModel.foodsForCurrentDate.collectAsStateWithLifecycle()
+    val activities by viewModel.activitiesForCurrentDate.collectAsStateWithLifecycle()
+    val waterEntries by viewModel.waterForCurrentDate.collectAsStateWithLifecycle()
     val date by viewModel.currentDate.collectAsStateWithLifecycle()
     
     val targetCalories = userProfile?.calorieTarget ?: 1800
     val consumedCalories = foods.sumOf { it.calories }
-    val remainingCalories = targetCalories - consumedCalories
+    val burnedCalories = activities.sumOf { it.caloriesBurned }
+    val remainingCalories = targetCalories + burnedCalories - consumedCalories
+    
+    val totalProtein = foods.sumOf { it.protein.toDouble() }.toFloat()
+    val totalCarbs = foods.sumOf { it.carbs.toDouble() }.toFloat()
+    val totalFat = foods.sumOf { it.fat.toDouble() }.toFloat()
+    val totalWater = waterEntries.sumOf { it.amountMl }
 
     var showAddDialog by remember { mutableStateOf(false) }
+    var showActivityDialog by remember { mutableStateOf(false) }
     var selectedCategory by remember { mutableStateOf("") }
     var foodToEdit by remember { mutableStateOf<FoodEntry?>(null) }
     
@@ -64,6 +76,35 @@ fun DiaryScreen(viewModel: MainViewModel) {
             }
         }
         
+        // Fasting Banner
+        if (userProfile?.isFasting == true) {
+            val startTime = userProfile?.fastingStartTime ?: 0L
+            val elapsedMs = System.currentTimeMillis() - startTime
+            val hours = elapsedMs / (1000 * 60 * 60)
+            val minutes = (elapsedMs / (1000 * 60)) % 60
+            Card(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)
+            ) {
+                Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Default.Timer, contentDescription = null, tint = MaterialTheme.colorScheme.onTertiaryContainer)
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Column {
+                        Text("Puasa Sedang Berjalan", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onTertiaryContainer)
+                        Text("Durasi: $hours jam $minutes menit", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onTertiaryContainer)
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    Button(onClick = { viewModel.toggleFasting() }, colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary)) {
+                        Text("Akhiri")
+                    }
+                }
+            }
+        } else {
+            Button(onClick = { viewModel.toggleFasting() }, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+                Text("Mulai Puasa (16:8)")
+            }
+        }
+
         // Summary Card
         Card(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
@@ -84,11 +125,22 @@ fun DiaryScreen(viewModel: MainViewModel) {
                         Text("Konsumsi", color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Text("$consumedCalories", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
                     }
+                    Text("+", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Column {
+                        Text("Olahraga", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text("$burnedCalories", fontWeight = FontWeight.Bold, color = Color(0xFF4CAF50))
+                    }
                     Text("=", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Column(horizontalAlignment = Alignment.End) {
                         Text("Sisa", color = MaterialTheme.colorScheme.onSurfaceVariant)
                         Text("$remainingCalories", fontWeight = FontWeight.Bold, color = if(remainingCalories < 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface)
                     }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text("P: ${String.format(Locale.US, "%.1f", totalProtein)}g", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
+                    Text("K: ${String.format(Locale.US, "%.1f", totalCarbs)}g", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
+                    Text("L: ${String.format(Locale.US, "%.1f", totalFat)}g", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
                 }
             }
         }
@@ -100,6 +152,60 @@ fun DiaryScreen(viewModel: MainViewModel) {
             modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
             contentPadding = PaddingValues(vertical = 8.dp)
         ) {
+            item {
+                // Water Tracker
+                Card(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
+                    Row(modifier = Modifier.padding(16.dp).fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Default.LocalDrink, contentDescription = null, tint = MaterialTheme.colorScheme.onPrimaryContainer)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Column {
+                            Text("Air Minum", fontWeight = FontWeight.Bold)
+                            Text("$totalWater ml / 2000 ml", style = MaterialTheme.typography.bodySmall)
+                        }
+                        Spacer(modifier = Modifier.weight(1f))
+                        Button(onClick = { viewModel.insertWater(250) }) {
+                            Text("+250ml")
+                        }
+                    }
+                }
+            }
+
+            item {
+                // Activity Tracker
+                Card(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(Icons.Default.FitnessCenter, contentDescription = null)
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text("Olahraga", fontWeight = FontWeight.Bold)
+                            }
+                            IconButton(onClick = { showActivityDialog = true }) {
+                                Icon(Icons.Default.Add, contentDescription = "Tambah Olahraga")
+                            }
+                        }
+                        if (activities.isEmpty()) {
+                            Text("Belum ada olahraga hari ini.", style = MaterialTheme.typography.bodySmall)
+                        } else {
+                            activities.forEach { act ->
+                                Row(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                                    Column {
+                                        Text(act.activityName, fontWeight = FontWeight.Medium)
+                                        Text("${act.durationMinutes} menit", style = MaterialTheme.typography.bodySmall)
+                                    }
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Text("${act.caloriesBurned} kkal", fontWeight = FontWeight.SemiBold, color = Color(0xFF4CAF50))
+                                        IconButton(onClick = { viewModel.deleteActivity(act.id) }) {
+                                            Icon(Icons.Default.Delete, contentDescription = "Hapus", tint = MaterialTheme.colorScheme.error)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             items(categories) { category ->
                 val categoryFoods = foods.filter { it.category == category }
                 CategorySection(
@@ -133,6 +239,45 @@ fun DiaryScreen(viewModel: MainViewModel) {
             }
         )
     }
+
+    if (showActivityDialog) {
+        AddActivityDialog(
+            onDismiss = { showActivityDialog = false },
+            onSave = { name, duration, calories ->
+                viewModel.insertActivity(name, duration, calories)
+                showActivityDialog = false
+            }
+        )
+    }
+}
+
+@Composable
+fun AddActivityDialog(onDismiss: () -> Unit, onSave: (String, Int, Int) -> Unit) {
+    var name by remember { mutableStateOf("") }
+    var duration by remember { mutableStateOf("") }
+    var calories by remember { mutableStateOf("") }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Tambah Olahraga") },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Nama Aktivitas (misal: Lari)") })
+                OutlinedTextField(value = duration, onValueChange = { duration = it }, label = { Text("Durasi (menit)") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
+                OutlinedTextField(value = calories, onValueChange = { calories = it }, label = { Text("Kalori Terbakar") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
+            }
+        },
+        confirmButton = {
+            Button(onClick = {
+                if(name.isNotBlank()) {
+                    onSave(name, duration.toIntOrNull() ?: 0, calories.toIntOrNull() ?: 0)
+                }
+            }) { Text("Simpan") }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text("Batal") }
+        }
+    )
 }
 
 @Composable

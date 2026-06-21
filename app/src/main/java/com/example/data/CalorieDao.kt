@@ -34,4 +34,22 @@ interface CalorieDao {
     
     @Query("DELETE FROM weight_entries WHERE id = :id")
     suspend fun deleteWeight(id: Int)
+
+    @Query("SELECT * FROM water_entries WHERE dateString = :date ORDER BY timestamp DESC")
+    fun getWaterForDate(date: String): Flow<List<WaterEntry>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertWater(water: WaterEntry)
+
+    @Query("DELETE FROM water_entries WHERE id = :id")
+    suspend fun deleteWater(id: Int)
+
+    @Query("SELECT * FROM activity_entries WHERE dateString = :date ORDER BY timestamp DESC")
+    fun getActivitiesForDate(date: String): Flow<List<ActivityEntry>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertActivity(activity: ActivityEntry)
+
+    @Query("DELETE FROM activity_entries WHERE id = :id")
+    suspend fun deleteActivity(id: Int)
 }

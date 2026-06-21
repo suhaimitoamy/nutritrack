@@ -5,7 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [UserProfile::class, FoodEntry::class, WeightEntry::class], version = 2, exportSchema = false)
+@Database(
+    entities = [
+        UserProfile::class, 
+        FoodEntry::class, 
+        WeightEntry::class, 
+        WaterEntry::class, 
+        ActivityEntry::class
+    ], 
+    version = 3, 
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun calorieDao(): CalorieDao
 

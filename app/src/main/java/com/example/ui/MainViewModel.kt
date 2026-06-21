@@ -7,6 +7,8 @@ import com.example.data.AppRepository
 import com.example.data.FoodEntry
 import com.example.data.UserProfile
 import com.example.data.WeightEntry
+import com.example.data.WaterEntry
+import com.example.data.ActivityEntry
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -38,6 +40,14 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
     val allFoods: StateFlow<List<FoodEntry>> = repository.allFoods
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
+    val waterForCurrentDate: StateFlow<List<WaterEntry>> = _currentDate
+        .flatMapLatest { date -> repository.getWaterForDate(date) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    val activitiesForCurrentDate: StateFlow<List<ActivityEntry>> = _currentDate
+        .flatMapLatest { date -> repository.getActivitiesForDate(date) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
     init {
         viewModelScope.launch {
             if (repository.userProfile.first() == null) {
@@ -57,20 +67,41 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
         breakfast: String = "07:00", 
         lunch: String = "12:00", 
         dinner: String = "19:00", 
-        weight: String = "06:00"
+        weight: String = "06:00",
+        heightCm: Int = 165,
+        age: Int = 25,
+        gender: String = "Pria",
+        dietGoal: String = "Bertahan"
     ) {
         viewModelScope.launch {
+            val currentProfile = repository.userProfile.first()
             repository.saveUserProfile(
                 UserProfile(
+                    id = currentProfile?.id ?: 1,
                     name = name, 
                     email = email, 
                     calorieTarget = target,
                     breakfastTime = breakfast,
                     lunchTime = lunch,
                     dinnerTime = dinner,
-                    weightTime = weight
+                    weightTime = weight,
+                    heightCm = heightCm,
+                    age = age,
+                    gender = gender,
+                    dietGoal = dietGoal,
+                    isFasting = currentProfile?.isFasting ?: false,
+                    fastingStartTime = currentProfile?.fastingStartTime ?: 0L
                 )
             )
+        }
+    }
+    
+    fun toggleFasting() {
+        viewModelScope.launch {
+            val currentProfile = repository.userProfile.first() ?: return@launch
+            val newIsFasting = !currentProfile.isFasting
+            val newTime = if(newIsFasting) System.currentTimeMillis() else 0L
+            repository.saveUserProfile(currentProfile.copy(isFasting = newIsFasting, fastingStartTime = newTime))
         }
     }
 
@@ -126,6 +157,42 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
     fun deleteWeight(id: Int) {
         viewModelScope.launch {
             repository.deleteWeight(id)
+        }
+    }
+
+    fun insertWater(amountMl: Int) {
+        viewModelScope.launch {
+            repository.insertWater(
+                WaterEntry(
+                    amountMl = amountMl,
+                    dateString = _currentDate.value
+                )
+            )
+        }
+    }
+
+    fun deleteWater(id: Int) {
+        viewModelScope.launch {
+            repository.deleteWater(id)
+        }
+    }
+
+    fun insertActivity(activityName: String, durationMinutes: Int, caloriesBurned: Int) {
+        viewModelScope.launch {
+            repository.insertActivity(
+                ActivityEntry(
+                    activityName = activityName,
+                    durationMinutes = durationMinutes,
+                    caloriesBurned = caloriesBurned,
+                    dateString = _currentDate.value
+                )
+            )
+        }
+    }
+
+    fun deleteActivity(id: Int) {
+        viewModelScope.launch {
+            repository.deleteActivity(id)
         }
     }
 }
