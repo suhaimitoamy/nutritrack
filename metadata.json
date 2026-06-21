@@ -1,0 +1,6 @@
+{
+  "name": "KaloriKu",
+  "description": "Aplikasi penghitungan kalori harian dan log berat badan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
