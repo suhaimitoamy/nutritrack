@@ -1,0 +1,28 @@
+﻿2026-06-21T08:45:29.2354788Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-21T08:45:29.2356068Z Post job cleanup.
+2026-06-21T08:45:29.4874016Z In post-action step
+2026-06-21T08:45:29.4887264Z ##[group]Stopping Gradle daemons
+2026-06-21T08:45:29.4888622Z Stopping Gradle daemons for /home/runner/work/_temp/.gradle-actions/gradle-installations/installs/gradle-8.13
+2026-06-21T08:45:29.4905675Z [command]/home/runner/work/_temp/.gradle-actions/gradle-installations/installs/gradle-8.13/bin/gradle --stop
+2026-06-21T08:45:30.1251040Z Stopping Daemon(s)
+2026-06-21T08:45:30.1252908Z 1 Daemon stopped
+2026-06-21T08:45:30.1391801Z ##[endgroup]
+2026-06-21T08:45:30.1392699Z Not performing cache-cleanup due to build failure
+2026-06-21T08:45:30.1393659Z ##[group]Caching Gradle state
+2026-06-21T08:45:30.5988261Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --files-from manifest.txt --use-compress-program zstdmt
+2026-06-21T08:45:31.0082603Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --files-from manifest.txt --use-compress-program zstdmt
+2026-06-21T08:45:31.1484636Z Sent 233363 of 233363 (100.0%), 0.8 MBs/sec
+2026-06-21T08:45:31.3022569Z Saved cache entry with key gradle-kotlin-dsl-v1-0dd58704d5605c81159b90c54a020660 from /home/runner/.gradle/caches/*/kotlin-dsl/accessors/*/,/home/runner/.gradle/caches/*/kotlin-dsl/scripts/*/ in 741ms
+2026-06-21T08:45:32.9095595Z Sent 67108864 of 257877825 (26.0%), 64.0 MBs/sec
+2026-06-21T08:45:32.9266752Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --files-from manifest.txt --use-compress-program zstdmt
+2026-06-21T08:45:33.2589798Z Sent 257877825 of 257877825 (100.0%), 182.3 MBs/sec
+2026-06-21T08:45:33.4461520Z Saved cache entry with key gradle-dependencies-v1-aaa08c0f83efd3c98668048d53a760ad from /home/runner/.gradle/caches/modules-*/files-*/*/*/*/* in 2922ms
+2026-06-21T08:45:36.3058405Z Sent 20270991 of 221597583 (9.1%), 19.3 MBs/sec
+2026-06-21T08:45:36.5510808Z Sent 221597583 of 221597583 (100.0%), 169.7 MBs/sec
+2026-06-21T08:45:36.6989792Z Saved cache entry with key gradle-transforms-v1-5ba6a63a2bbeb6fae684d557c51814a2 from /home/runner/.gradle/caches/transforms-4/*/,/home/runner/.gradle/caches/*/transforms/*/ in 5134ms
+2026-06-21T08:45:37.4270979Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --files-from manifest.txt --use-compress-program zstdmt
+2026-06-21T08:45:37.9809349Z Sent 1102740 of 1102740 (100.0%), 3.2 MBs/sec
+2026-06-21T08:45:38.1641298Z Saved cache entry with key gradle-home-v1|Linux-X64|build[620c74083efa5b88ef904c2356f72d31]-0d0a6b89c8e3ece002307edea88c4be8c50ed332 from /home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle in 752ms
+2026-06-21T08:45:38.1642951Z ##[endgroup]
+2026-06-21T08:45:38.1652140Z Generating Job Summary
+2026-06-21T08:45:38.1666377Z Completed post-action step

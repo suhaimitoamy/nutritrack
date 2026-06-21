@@ -22,6 +22,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.data.FoodEntry
+import com.example.data.FoodDictionary
+import com.example.data.FoodItem
 import com.example.ui.MainViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -182,6 +184,7 @@ fun CategorySection(title: String, foods: List<FoodEntry>, onAddClick: () -> Uni
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddFoodDialog(category: String, editFood: FoodEntry? = null, onDismiss: () -> Unit, onSave: (Int, String, Float, Int, Float, Float, Float) -> Unit) {
     var name by remember(editFood) { mutableStateOf(editFood?.name ?: "") }
@@ -191,17 +194,49 @@ fun AddFoodDialog(category: String, editFood: FoodEntry? = null, onDismiss: () -
     var carbs by remember(editFood) { mutableStateOf(editFood?.carbs?.toString() ?: "0") }
     var fat by remember(editFood) { mutableStateOf(editFood?.fat?.toString() ?: "0") }
 
+    var expanded by remember { mutableStateOf(false) }
+    val filteredFoods = FoodDictionary.foods.filter { it.name.contains(name, ignoreCase = true) }
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Tambah $category") },
         text = {
             Column {
-                OutlinedTextField(
-                    value = name,
-                    onValueChange = { name = it },
-                    label = { Text("Nama Makanan") },
-                    modifier = Modifier.fillMaxWidth()
-                )
+                ExposedDropdownMenuBox(
+                    expanded = expanded,
+                    onExpandedChange = { expanded = !expanded }
+                ) {
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { 
+                            name = it
+                            expanded = true
+                        },
+                        label = { Text("Nama Makanan") },
+                        modifier = Modifier.fillMaxWidth().menuAnchor()
+                    )
+                    ExposedDropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false }
+                    ) {
+                        filteredFoods.forEach { food ->
+                            DropdownMenuItem(
+                                text = { Text(food.name) },
+                                onClick = {
+                                    name = food.name
+                                    expanded = false
+                                    // Auto-fill macros based on selected food and current portion
+                                    val p = portions.toFloatOrNull() ?: 1f
+                                    calories = (food.calories * p).toInt().toString()
+                                    protein = (food.protein * p).toString()
+                                    carbs = (food.carbs * p).toString()
+                                    fat = (food.fat * p).toString()
+                                }
+                            )
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedTextField(
                         value = portions,

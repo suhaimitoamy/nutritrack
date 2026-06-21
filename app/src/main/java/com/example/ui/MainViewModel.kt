@@ -50,9 +50,27 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
         _currentDate.value = date
     }
     
-    fun saveUserProfile(name: String, email: String, target: Int) {
+    fun saveUserProfile(
+        name: String, 
+        email: String, 
+        target: Int, 
+        breakfast: String = "07:00", 
+        lunch: String = "12:00", 
+        dinner: String = "19:00", 
+        weight: String = "06:00"
+    ) {
         viewModelScope.launch {
-            repository.saveUserProfile(UserProfile(name = name, email = email, calorieTarget = target))
+            repository.saveUserProfile(
+                UserProfile(
+                    name = name, 
+                    email = email, 
+                    calorieTarget = target,
+                    breakfastTime = breakfast,
+                    lunchTime = lunch,
+                    dinnerTime = dinner,
+                    weightTime = weight
+                )
+            )
         }
     }
 

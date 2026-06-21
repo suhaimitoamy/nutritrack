@@ -1,0 +1,73 @@
+﻿2026-06-21T08:55:49.7130199Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-21T08:55:49.7138446Z ##[group]Run actions/checkout@v4
+2026-06-21T08:55:49.7139034Z with:
+2026-06-21T08:55:49.7139476Z   repository: suhaimitoamy/nutritrack
+2026-06-21T08:55:49.7142651Z   token: ***
+2026-06-21T08:55:49.7143034Z   ssh-strict: true
+2026-06-21T08:55:49.7143404Z   ssh-user: git
+2026-06-21T08:55:49.7143758Z   persist-credentials: true
+2026-06-21T08:55:49.7144191Z   clean: true
+2026-06-21T08:55:49.7144585Z   sparse-checkout-cone-mode: true
+2026-06-21T08:55:49.7144953Z   fetch-depth: 1
+2026-06-21T08:55:49.7145341Z   fetch-tags: false
+2026-06-21T08:55:49.7145690Z   show-progress: true
+2026-06-21T08:55:49.7146056Z   lfs: false
+2026-06-21T08:55:49.7146427Z   submodules: false
+2026-06-21T08:55:49.7146911Z   set-safe-directory: true
+2026-06-21T08:55:49.7147596Z ##[endgroup]
+2026-06-21T08:55:49.8176282Z Syncing repository: suhaimitoamy/nutritrack
+2026-06-21T08:55:49.8177801Z ##[group]Getting Git version info
+2026-06-21T08:55:49.8178212Z Working directory is '/home/runner/work/nutritrack/nutritrack'
+2026-06-21T08:55:49.8178842Z [command]/usr/bin/git version
+2026-06-21T08:55:49.8226639Z git version 2.54.0
+2026-06-21T08:55:49.8245293Z ##[endgroup]
+2026-06-21T08:55:49.8260256Z Temporarily overriding HOME='/home/runner/work/_temp/86de7b8f-16ff-4236-95ee-5a53a58f60b4' before making global git config changes
+2026-06-21T08:55:49.8261646Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-21T08:55:49.8266536Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/nutritrack/nutritrack
+2026-06-21T08:55:49.8314373Z Deleting the contents of '/home/runner/work/nutritrack/nutritrack'
+2026-06-21T08:55:49.8318158Z ##[group]Initializing the repository
+2026-06-21T08:55:49.8323245Z [command]/usr/bin/git init /home/runner/work/nutritrack/nutritrack
+2026-06-21T08:55:49.8420387Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-21T08:55:49.8421280Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-06-21T08:55:49.8422065Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-06-21T08:55:49.8422792Z hint: call:
+2026-06-21T08:55:49.8423175Z hint:
+2026-06-21T08:55:49.8423672Z hint: 	git config --global init.defaultBranch <name>
+2026-06-21T08:55:49.8424230Z hint:
+2026-06-21T08:55:49.8424712Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-21T08:55:49.8425561Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-21T08:55:49.8426139Z hint:
+2026-06-21T08:55:49.8426550Z hint: 	git branch -m <name>
+2026-06-21T08:55:49.8427014Z hint:
+2026-06-21T08:55:49.8427624Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-06-21T08:55:49.8428584Z Initialized empty Git repository in /home/runner/work/nutritrack/nutritrack/.git/
+2026-06-21T08:55:49.8436949Z [command]/usr/bin/git remote add origin https://github.com/suhaimitoamy/nutritrack
+2026-06-21T08:55:49.8510962Z ##[endgroup]
+2026-06-21T08:55:49.8511429Z ##[group]Disabling automatic garbage collection
+2026-06-21T08:55:49.8514921Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-21T08:55:49.8544061Z ##[endgroup]
+2026-06-21T08:55:49.8544606Z ##[group]Setting up auth
+2026-06-21T08:55:49.8550143Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-21T08:55:49.8584265Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-21T08:55:49.8931102Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-21T08:55:49.8964045Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-21T08:55:49.9192093Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-21T08:55:49.9223291Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-21T08:55:49.9455051Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-21T08:55:49.9488304Z ##[endgroup]
+2026-06-21T08:55:49.9488895Z ##[group]Fetching the repository
+2026-06-21T08:55:49.9497089Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0d01d9dd7dd5c073016bebde57b3def5c68b8014:refs/remotes/origin/main
+2026-06-21T08:55:50.3963469Z From https://github.com/suhaimitoamy/nutritrack
+2026-06-21T08:55:50.3964181Z  * [new ref]         0d01d9dd7dd5c073016bebde57b3def5c68b8014 -> origin/main
+2026-06-21T08:55:50.3998496Z ##[endgroup]
+2026-06-21T08:55:50.3999122Z ##[group]Determining the checkout info
+2026-06-21T08:55:50.4001259Z ##[endgroup]
+2026-06-21T08:55:50.4006903Z [command]/usr/bin/git sparse-checkout disable
+2026-06-21T08:55:50.4052203Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-21T08:55:50.4078961Z ##[group]Checking out the ref
+2026-06-21T08:55:50.4083471Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-06-21T08:55:50.4178372Z Switched to a new branch 'main'
+2026-06-21T08:55:50.4180812Z branch 'main' set up to track 'origin/main'.
+2026-06-21T08:55:50.4186505Z ##[endgroup]
+2026-06-21T08:55:50.4227259Z [command]/usr/bin/git log -1 --format=%H
+2026-06-21T08:55:50.4251131Z 0d01d9dd7dd5c073016bebde57b3def5c68b8014

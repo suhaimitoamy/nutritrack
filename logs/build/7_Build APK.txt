@@ -1,0 +1,455 @@
+﻿2026-06-21T08:44:37.3002229Z ##[group]Run gradle :app:assembleDebug --stacktrace
+2026-06-21T08:44:37.3002767Z [36;1mgradle :app:assembleDebug --stacktrace[0m
+2026-06-21T08:44:37.3037247Z shell: /usr/bin/bash -e {0}
+2026-06-21T08:44:37.3037578Z env:
+2026-06-21T08:44:37.3037973Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-21T08:44:37.3038579Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-21T08:44:37.3039062Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-06-21T08:44:37.3039469Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-06-21T08:44:37.3039860Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+2026-06-21T08:44:37.3040511Z   GRADLE_USER_HOME: /home/runner/.gradle
+2026-06-21T08:44:37.3040881Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+2026-06-21T08:44:37.3041247Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+2026-06-21T08:44:37.3041754Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+2026-06-21T08:44:37.3042301Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions
+2026-06-21T08:44:37.3042732Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+2026-06-21T08:44:37.3043073Z ##[endgroup]
+2026-06-21T08:44:38.4115346Z Starting a Gradle Daemon (subsequent builds will be faster)
+2026-06-21T08:45:28.0130474Z > Task :app:preBuild UP-TO-DATE
+2026-06-21T08:45:28.0131819Z > Task :app:preDebugBuild UP-TO-DATE
+2026-06-21T08:45:28.0132675Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+2026-06-21T08:45:28.0133617Z > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+2026-06-21T08:45:28.1113177Z > Task :app:generateDebugBuildConfig
+2026-06-21T08:45:28.6127699Z > Task :app:checkDebugAarMetadata FAILED
+2026-06-21T08:45:28.7135339Z 
+2026-06-21T08:45:28.7141643Z gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1782031482087.json
+2026-06-21T08:45:28.7170726Z 
+2026-06-21T08:45:28.7201986Z [Incubating] Problems report is available at: file:///home/runner/work/nutritrack/nutritrack/build/reports/problems/problems-report.html
+2026-06-21T08:45:28.7235548Z FAILURE: Build failed with an exception.
+2026-06-21T08:45:28.7314525Z 
+2026-06-21T08:45:28.7364086Z * What went wrong:
+2026-06-21T08:45:28.7413047Z Execution failed for task ':app:checkDebugAarMetadata'.
+2026-06-21T08:45:28.7415288Z > Configuration `:app:debugRuntimeClasspath` contains AndroidX dependencies, but the `android.useAndroidX` property is not enabled, which may cause runtime issues.
+2026-06-21T08:45:28.7470860Z   Set `android.useAndroidX=true` in the `gradle.properties` file and retry.
+2026-06-21T08:45:28.7509442Z   The following AndroidX dependencies are detected:
+2026-06-21T08:45:28.7510060Z 
+2026-06-21T08:45:28.7511280Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+2026-06-21T08:45:28.7512953Z   :app:debugRuntimeClasspath -> androidx.compose.ui:ui-test-manifest:1.7.2
+2026-06-21T08:45:28.7514446Z   :app:debugRuntimeClasspath -> androidx.compose.ui:ui-test-manifest:1.7.2 -> androidx.activity:activity:1.10.1
+2026-06-21T08:45:28.7515722Z 
+2026-06-21T08:45:28.7516863Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+2026-06-21T08:45:28.7517972Z 
+2026-06-21T08:45:28.7519336Z For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+2026-06-21T08:45:28.7520968Z 2 actionable tasks: 2 executed
+2026-06-21T08:45:28.7536768Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.annotation:annotation:1.9.1
+2026-06-21T08:45:28.7541833Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.annotation:annotation:1.9.1 -> androidx.annotation:annotation-jvm:1.9.1
+2026-06-21T08:45:28.7545068Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0
+2026-06-21T08:45:28.7596504Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0
+2026-06-21T08:45:28.7613602Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.annotation:annotation-experimental:1.4.1
+2026-06-21T08:45:28.7618372Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.collection:collection:1.4.4
+2026-06-21T08:45:28.7623585Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.collection:collection:1.4.4 -> androidx.collection:collection-jvm:1.4.4
+2026-06-21T08:45:28.7628659Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.collection:collection-ktx:1.4.4
+2026-06-21T08:45:28.7632144Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.concurrent:concurrent-futures:1.1.0
+2026-06-21T08:45:28.7634209Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.core:core-viewtree:1.0.0
+2026-06-21T08:45:28.7636258Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.interpolator:interpolator:1.0.0
+2026-06-21T08:45:28.7639730Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-common:2.8.7
+2026-06-21T08:45:28.7644829Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-common:2.8.7 -> androidx.lifecycle:lifecycle-common-jvm:2.8.7
+2026-06-21T08:45:28.7649054Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material3:material3-android:1.3.0 -> androidx.lifecycle:lifecycle-common-java8:2.8.7
+2026-06-21T08:45:28.7652551Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.lifecycle:lifecycle-process:2.8.7 -> androidx.lifecycle:lifecycle-livedata-core:2.8.7
+2026-06-21T08:45:28.7655932Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.savedstate:savedstate:1.2.1 -> androidx.arch.core:core-common:2.2.0
+2026-06-21T08:45:28.7659732Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.lifecycle:lifecycle-process:2.8.7 -> androidx.lifecycle:lifecycle-livedata-core:2.8.7 -> androidx.arch.core:core-runtime:2.2.0
+2026-06-21T08:45:28.7663464Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-runtime:2.8.7
+2026-06-21T08:45:28.7666414Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-runtime:2.8.7 -> androidx.lifecycle:lifecycle-runtime-android:2.8.7
+2026-06-21T08:45:28.7670648Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.profileinstaller:profileinstaller:1.4.0
+2026-06-21T08:45:28.7674493Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.startup:startup-runtime:1.1.1
+2026-06-21T08:45:28.7676940Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.tracing:tracing:1.2.0
+2026-06-21T08:45:28.7678619Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-compose:2.8.7
+2026-06-21T08:45:28.7680736Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-compose:2.8.7 -> androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7
+2026-06-21T08:45:28.7682881Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.runtime:runtime:1.7.2
+2026-06-21T08:45:28.7684882Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.runtime:runtime-android:1.7.2
+2026-06-21T08:45:28.7687121Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.runtime:runtime-saveable:1.7.2
+2026-06-21T08:45:28.7689285Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.runtime:runtime-saveable-android:1.7.2
+2026-06-21T08:45:28.7691248Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-ktx:2.8.7
+2026-06-21T08:45:28.7693104Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-ktx:2.8.7 -> androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7
+2026-06-21T08:45:28.7695544Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-viewmodel:2.8.7
+2026-06-21T08:45:28.7698535Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-viewmodel:2.8.7 -> androidx.lifecycle:lifecycle-viewmodel-android:2.8.7
+2026-06-21T08:45:28.7701199Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7
+2026-06-21T08:45:28.7703142Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7 -> androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7
+2026-06-21T08:45:28.7704776Z   :app:debugRuntimeClasspath -> androidx.compose.ui:ui:1.7.2
+2026-06-21T08:45:28.7706510Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-android:1.7.2
+2026-06-21T08:45:28.7709887Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.activity:activity-ktx:1.10.1
+2026-06-21T08:45:28.7714761Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7
+2026-06-21T08:45:28.7719697Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7
+2026-06-21T08:45:28.7723332Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.savedstate:savedstate:1.2.1
+2026-06-21T08:45:28.7727050Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.savedstate:savedstate-ktx:1.2.1
+2026-06-21T08:45:28.7730926Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.lifecycle:lifecycle-process:2.8.7
+2026-06-21T08:45:28.7733052Z   :app:debugRuntimeClasspath -> androidx.activity:activity-compose:1.10.1
+2026-06-21T08:45:28.7734869Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-android:1.7.2 -> androidx.autofill:autofill:1.0.0
+2026-06-21T08:45:28.7736859Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-geometry:1.7.2
+2026-06-21T08:45:28.7738713Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-geometry-android:1.7.2
+2026-06-21T08:45:28.7740717Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-util:1.7.2
+2026-06-21T08:45:28.7742513Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-util-android:1.7.2
+2026-06-21T08:45:28.7743957Z   :app:debugRuntimeClasspath -> androidx.compose.ui:ui-graphics:1.7.2
+2026-06-21T08:45:28.7745527Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-graphics-android:1.7.2
+2026-06-21T08:45:28.7747267Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-unit:1.7.2
+2026-06-21T08:45:28.7749068Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-unit-android:1.7.2
+2026-06-21T08:45:28.7750998Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-text:1.7.2
+2026-06-21T08:45:28.7752758Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-text-android:1.7.2
+2026-06-21T08:45:28.7755175Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0
+2026-06-21T08:45:28.7756909Z   :app:debugRuntimeClasspath -> androidx.compose.ui:ui-tooling:1.7.2
+2026-06-21T08:45:28.7758488Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-android:1.7.2
+2026-06-21T08:45:28.7760548Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.animation:animation:1.7.2
+2026-06-21T08:45:28.7762523Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.animation:animation-android:1.7.2
+2026-06-21T08:45:28.7764440Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.animation:animation-core:1.7.2
+2026-06-21T08:45:28.7766381Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.animation:animation-core-android:1.7.2
+2026-06-21T08:45:28.7768449Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.foundation:foundation-layout:1.7.2
+2026-06-21T08:45:28.7770700Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-layout-android:1.7.2
+2026-06-21T08:45:28.7772994Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation:1.7.2
+2026-06-21T08:45:28.7774990Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2
+2026-06-21T08:45:28.7776973Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material:1.7.0
+2026-06-21T08:45:28.7778898Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0
+2026-06-21T08:45:28.7780773Z   :app:debugRuntimeClasspath -> androidx.compose.material:material-icons-core:1.7.0
+2026-06-21T08:45:28.7782683Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-icons-core-android:1.7.0
+2026-06-21T08:45:28.7784776Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-ripple:1.7.0
+2026-06-21T08:45:28.7786925Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-ripple-android:1.7.0
+2026-06-21T08:45:28.7788908Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-data:1.7.2
+2026-06-21T08:45:28.7791039Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-data-android:1.7.2
+2026-06-21T08:45:28.7792622Z   :app:debugRuntimeClasspath -> androidx.compose.ui:ui-tooling-preview:1.7.2
+2026-06-21T08:45:28.7794290Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-preview-android:1.7.2
+2026-06-21T08:45:28.7796487Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-graphics-android:1.7.2 -> androidx.graphics:graphics-path:1.0.1
+2026-06-21T08:45:28.7798960Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-android:1.7.2 -> androidx.customview:customview-poolingcontainer:1.0.0
+2026-06-21T08:45:28.7801410Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.versionedparcelable:versionedparcelable:1.1.1
+2026-06-21T08:45:28.7803089Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00
+2026-06-21T08:45:28.7804444Z   :app:debugRuntimeClasspath -> androidx.compose.material:material-icons-extended:1.7.0
+2026-06-21T08:45:28.7806440Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-icons-extended-android:1.7.0
+2026-06-21T08:45:28.7808479Z   :app:debugRuntimeClasspath -> androidx.compose.material3:material3:1.3.0
+2026-06-21T08:45:28.7810309Z   :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material3:material3-android:1.3.0
+2026-06-21T08:45:28.7811945Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9
+2026-06-21T08:45:28.7814749Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9
+2026-06-21T08:45:28.7818704Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9
+2026-06-21T08:45:28.7822836Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9
+2026-06-21T08:45:28.7827095Z   :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9
+2026-06-21T08:45:28.7829451Z   :app:debugRuntimeClasspath -> androidx.room:room-ktx:2.7.0
+2026-06-21T08:45:28.7831332Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.room:room-common:2.7.0
+2026-06-21T08:45:28.7833864Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.room:room-common:2.7.0 -> androidx.room:room-common-jvm:2.7.0
+2026-06-21T08:45:28.7835758Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0
+2026-06-21T08:45:28.7837248Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0
+2026-06-21T08:45:28.7839220Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite:2.5.0
+2026-06-21T08:45:28.7841844Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite:2.5.0 -> androidx.sqlite:sqlite-android:2.5.0
+2026-06-21T08:45:28.7844248Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite-framework:2.5.0
+2026-06-21T08:45:28.7846866Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite-framework:2.5.0 -> androidx.sqlite:sqlite-framework-android:2.5.0
+2026-06-21T08:45:28.7848336Z 
+2026-06-21T08:45:28.7848665Z * Try:
+2026-06-21T08:45:28.7849460Z > Run with --info or --debug option to get more log output.
+2026-06-21T08:45:28.7850544Z > Run with --scan to get full insights.
+2026-06-21T08:45:28.7851397Z > Get more help at https://help.gradle.org.
+2026-06-21T08:45:28.7851979Z 
+2026-06-21T08:45:28.7852345Z * Exception is:
+2026-06-21T08:45:28.7853563Z org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkDebugAarMetadata'.
+2026-06-21T08:45:28.7855473Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
+2026-06-21T08:45:28.7857587Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+2026-06-21T08:45:28.7859520Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+2026-06-21T08:45:28.7861580Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+2026-06-21T08:45:28.7864060Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+2026-06-21T08:45:28.7866522Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+2026-06-21T08:45:28.7868709Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+2026-06-21T08:45:28.7870853Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.7872821Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+2026-06-21T08:45:28.7875307Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.7878714Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+2026-06-21T08:45:28.7880868Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+2026-06-21T08:45:28.7882584Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+2026-06-21T08:45:28.7884758Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+2026-06-21T08:45:28.7887017Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+2026-06-21T08:45:28.7889388Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+2026-06-21T08:45:28.7891627Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+2026-06-21T08:45:28.7893723Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+2026-06-21T08:45:28.7896130Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+2026-06-21T08:45:28.7898195Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+2026-06-21T08:45:28.7899935Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+2026-06-21T08:45:28.7901700Z 	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
+2026-06-21T08:45:28.7903550Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
+2026-06-21T08:45:28.7905472Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
+2026-06-21T08:45:28.7907212Z 	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+2026-06-21T08:45:28.7909062Z 	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+2026-06-21T08:45:28.7913190Z 	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+2026-06-21T08:45:28.7915498Z 	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+2026-06-21T08:45:28.7917807Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+2026-06-21T08:45:28.7920119Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+2026-06-21T08:45:28.7922476Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+2026-06-21T08:45:28.7924359Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.7926584Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+2026-06-21T08:45:28.7928501Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.7930483Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+2026-06-21T08:45:28.7932483Z 	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+2026-06-21T08:45:28.7934621Z 	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
+2026-06-21T08:45:28.7936786Z 	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
+2026-06-21T08:45:28.7938748Z 	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
+2026-06-21T08:45:28.7940664Z 	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:46)
+2026-06-21T08:45:28.7942453Z 	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
+2026-06-21T08:45:28.7944794Z 	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
+2026-06-21T08:45:28.7947071Z 	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+2026-06-21T08:45:28.7949126Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+2026-06-21T08:45:28.7951179Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+2026-06-21T08:45:28.7952989Z 	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
+2026-06-21T08:45:28.7954685Z 	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+2026-06-21T08:45:28.7956546Z 	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
+2026-06-21T08:45:28.7958335Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+2026-06-21T08:45:28.7960368Z 	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
+2026-06-21T08:45:28.7962183Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+2026-06-21T08:45:28.7963896Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+2026-06-21T08:45:28.7966536Z Caused by: com.android.builder.errors.EvalIssueException: Configuration `:app:debugRuntimeClasspath` contains AndroidX dependencies, but the `android.useAndroidX` property is not enabled, which may cause runtime issues.
+2026-06-21T08:45:28.7968727Z Set `android.useAndroidX=true` in the `gradle.properties` file and retry.
+2026-06-21T08:45:28.7969872Z The following AndroidX dependencies are detected:
+2026-06-21T08:45:28.7971178Z :app:debugRuntimeClasspath -> androidx.compose.ui:ui-test-manifest:1.7.2
+2026-06-21T08:45:28.7972763Z :app:debugRuntimeClasspath -> androidx.compose.ui:ui-test-manifest:1.7.2 -> androidx.activity:activity:1.10.1
+2026-06-21T08:45:28.7976104Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.annotation:annotation:1.9.1
+2026-06-21T08:45:28.7981128Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.annotation:annotation:1.9.1 -> androidx.annotation:annotation-jvm:1.9.1
+2026-06-21T08:45:28.7984255Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0
+2026-06-21T08:45:28.7985587Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0
+2026-06-21T08:45:28.7989107Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.annotation:annotation-experimental:1.4.1
+2026-06-21T08:45:28.7994024Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.collection:collection:1.4.4
+2026-06-21T08:45:28.7998993Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.collection:collection:1.4.4 -> androidx.collection:collection-jvm:1.4.4
+2026-06-21T08:45:28.8004417Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.collection:collection-ktx:1.4.4
+2026-06-21T08:45:28.8007671Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.concurrent:concurrent-futures:1.1.0
+2026-06-21T08:45:28.8009708Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.core:core-viewtree:1.0.0
+2026-06-21T08:45:28.8011881Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.interpolator:interpolator:1.0.0
+2026-06-21T08:45:28.8017854Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-common:2.8.7
+2026-06-21T08:45:28.8023236Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-common:2.8.7 -> androidx.lifecycle:lifecycle-common-jvm:2.8.7
+2026-06-21T08:45:28.8027095Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material3:material3-android:1.3.0 -> androidx.lifecycle:lifecycle-common-java8:2.8.7
+2026-06-21T08:45:28.8030730Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.lifecycle:lifecycle-process:2.8.7 -> androidx.lifecycle:lifecycle-livedata-core:2.8.7
+2026-06-21T08:45:28.8034201Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.savedstate:savedstate:1.2.1 -> androidx.arch.core:core-common:2.2.0
+2026-06-21T08:45:28.8037974Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.lifecycle:lifecycle-process:2.8.7 -> androidx.lifecycle:lifecycle-livedata-core:2.8.7 -> androidx.arch.core:core-runtime:2.2.0
+2026-06-21T08:45:28.8041382Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-runtime:2.8.7
+2026-06-21T08:45:28.8044607Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-runtime:2.8.7 -> androidx.lifecycle:lifecycle-runtime-android:2.8.7
+2026-06-21T08:45:28.8048675Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.profileinstaller:profileinstaller:1.4.0
+2026-06-21T08:45:28.8052607Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.startup:startup-runtime:1.1.1
+2026-06-21T08:45:28.8055012Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.tracing:tracing:1.2.0
+2026-06-21T08:45:28.8056666Z :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-compose:2.8.7
+2026-06-21T08:45:28.8058558Z :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-compose:2.8.7 -> androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7
+2026-06-21T08:45:28.8061050Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.runtime:runtime:1.7.2
+2026-06-21T08:45:28.8062962Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.runtime:runtime-android:1.7.2
+2026-06-21T08:45:28.8064883Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.runtime:runtime-saveable:1.7.2
+2026-06-21T08:45:28.8066851Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.runtime:runtime-saveable-android:1.7.2
+2026-06-21T08:45:28.8068461Z :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-ktx:2.8.7
+2026-06-21T08:45:28.8070461Z :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-runtime-ktx:2.8.7 -> androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7
+2026-06-21T08:45:28.8072824Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-viewmodel:2.8.7
+2026-06-21T08:45:28.8075830Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.lifecycle:lifecycle-viewmodel:2.8.7 -> androidx.lifecycle:lifecycle-viewmodel-android:2.8.7
+2026-06-21T08:45:28.8078072Z :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7
+2026-06-21T08:45:28.8079993Z :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7 -> androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7
+2026-06-21T08:45:28.8082004Z :app:debugRuntimeClasspath -> androidx.compose.ui:ui:1.7.2
+2026-06-21T08:45:28.8083521Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-android:1.7.2
+2026-06-21T08:45:28.8086977Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.activity:activity-ktx:1.10.1
+2026-06-21T08:45:28.8091954Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7
+2026-06-21T08:45:28.8096935Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7
+2026-06-21T08:45:28.8100896Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0 -> androidx.savedstate:savedstate:1.2.1
+2026-06-21T08:45:28.8104590Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.savedstate:savedstate-ktx:1.2.1
+2026-06-21T08:45:28.8108401Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0 -> androidx.lifecycle:lifecycle-process:2.8.7
+2026-06-21T08:45:28.8110616Z :app:debugRuntimeClasspath -> androidx.activity:activity-compose:1.10.1
+2026-06-21T08:45:28.8112473Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-android:1.7.2 -> androidx.autofill:autofill:1.0.0
+2026-06-21T08:45:28.8114587Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-geometry:1.7.2
+2026-06-21T08:45:28.8118509Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-geometry-android:1.7.2
+2026-06-21T08:45:28.8120566Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-util:1.7.2
+2026-06-21T08:45:28.8122350Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-util-android:1.7.2
+2026-06-21T08:45:28.8123821Z :app:debugRuntimeClasspath -> androidx.compose.ui:ui-graphics:1.7.2
+2026-06-21T08:45:28.8125374Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-graphics-android:1.7.2
+2026-06-21T08:45:28.8127136Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-unit:1.7.2
+2026-06-21T08:45:28.8128875Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-unit-android:1.7.2
+2026-06-21T08:45:28.8130798Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-text:1.7.2
+2026-06-21T08:45:28.8132534Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-text-android:1.7.2
+2026-06-21T08:45:28.8134657Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2 -> androidx.emoji2:emoji2:1.3.0
+2026-06-21T08:45:28.8136400Z :app:debugRuntimeClasspath -> androidx.compose.ui:ui-tooling:1.7.2
+2026-06-21T08:45:28.8138034Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-android:1.7.2
+2026-06-21T08:45:28.8139945Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.animation:animation:1.7.2
+2026-06-21T08:45:28.8142043Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.animation:animation-android:1.7.2
+2026-06-21T08:45:28.8143976Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.animation:animation-core:1.7.2
+2026-06-21T08:45:28.8145917Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.animation:animation-core-android:1.7.2
+2026-06-21T08:45:28.8147959Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.compose.foundation:foundation-layout:1.7.2
+2026-06-21T08:45:28.8150022Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-layout-android:1.7.2
+2026-06-21T08:45:28.8152119Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation:1.7.2
+2026-06-21T08:45:28.8154378Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.foundation:foundation-android:1.7.2
+2026-06-21T08:45:28.8156248Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material:1.7.0
+2026-06-21T08:45:28.8158106Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-android:1.7.0
+2026-06-21T08:45:28.8159734Z :app:debugRuntimeClasspath -> androidx.compose.material:material-icons-core:1.7.0
+2026-06-21T08:45:28.8161949Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-icons-core-android:1.7.0
+2026-06-21T08:45:28.8163965Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-ripple:1.7.0
+2026-06-21T08:45:28.8165942Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-ripple-android:1.7.0
+2026-06-21T08:45:28.8167873Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-data:1.7.2
+2026-06-21T08:45:28.8169723Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-data-android:1.7.2
+2026-06-21T08:45:28.8171783Z :app:debugRuntimeClasspath -> androidx.compose.ui:ui-tooling-preview:1.7.2
+2026-06-21T08:45:28.8173475Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-tooling-preview-android:1.7.2
+2026-06-21T08:45:28.8175691Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-graphics-android:1.7.2 -> androidx.graphics:graphics-path:1.0.1
+2026-06-21T08:45:28.8178169Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.ui:ui-android:1.7.2 -> androidx.customview:customview-poolingcontainer:1.0.0
+2026-06-21T08:45:28.8180650Z :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.18.0 -> androidx.core:core:1.18.0 -> androidx.versionedparcelable:versionedparcelable:1.1.1
+2026-06-21T08:45:28.8182424Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00
+2026-06-21T08:45:28.8183797Z :app:debugRuntimeClasspath -> androidx.compose.material:material-icons-extended:1.7.0
+2026-06-21T08:45:28.8185648Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material:material-icons-extended-android:1.7.0
+2026-06-21T08:45:28.8187363Z :app:debugRuntimeClasspath -> androidx.compose.material3:material3:1.3.0
+2026-06-21T08:45:28.8189010Z :app:debugRuntimeClasspath -> androidx.compose:compose-bom:2024.09.00 -> androidx.compose.material3:material3-android:1.3.0
+2026-06-21T08:45:28.8190806Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9
+2026-06-21T08:45:28.8193626Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9
+2026-06-21T08:45:28.8197614Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9
+2026-06-21T08:45:28.8201912Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9 -> androidx.navigation:navigation-common:2.8.9
+2026-06-21T08:45:28.8205948Z :app:debugRuntimeClasspath -> androidx.navigation:navigation-compose:2.8.9 -> androidx.navigation:navigation-runtime-ktx:2.8.9 -> androidx.navigation:navigation-common-ktx:2.8.9 -> androidx.navigation:navigation-common:2.8.9 -> androidx.navigation:navigation-runtime:2.8.9
+2026-06-21T08:45:28.8208505Z :app:debugRuntimeClasspath -> androidx.room:room-ktx:2.7.0
+2026-06-21T08:45:28.8210389Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.room:room-common:2.7.0
+2026-06-21T08:45:28.8212821Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.room:room-common:2.7.0 -> androidx.room:room-common-jvm:2.7.0
+2026-06-21T08:45:28.8214554Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0
+2026-06-21T08:45:28.8215969Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0
+2026-06-21T08:45:28.8217851Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite:2.5.0
+2026-06-21T08:45:28.8220335Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite:2.5.0 -> androidx.sqlite:sqlite-android:2.5.0
+2026-06-21T08:45:28.8222721Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite-framework:2.5.0
+2026-06-21T08:45:28.8225269Z :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.7.0 -> androidx.room:room-runtime-android:2.7.0 -> androidx.sqlite:sqlite-framework:2.5.0 -> androidx.sqlite:sqlite-framework-android:2.5.0
+2026-06-21T08:45:28.8227464Z 	at com.android.builder.errors.IssueReporter.reportError(IssueReporter.kt:118)
+2026-06-21T08:45:28.8228836Z 	at com.android.builder.errors.IssueReporter.reportError$default(IssueReporter.kt:114)
+2026-06-21T08:45:28.8231049Z 	at com.android.build.gradle.internal.dependency.AndroidXDependencyCheck$AndroidXDisabledJetifierDisabled.execute(AndroidXDependencyCheck.kt:72)
+2026-06-21T08:45:28.8233523Z 	at com.android.build.gradle.internal.dependency.AndroidXDependencyCheck$AndroidXDisabledJetifierDisabled.execute(AndroidXDependencyCheck.kt:40)
+2026-06-21T08:45:28.8235880Z 	at org.gradle.internal.code.DefaultUserCodeApplicationContext$CurrentApplication$1.execute(DefaultUserCodeApplicationContext.java:124)
+2026-06-21T08:45:28.8237917Z 	at org.gradle.internal.event.BroadcastDispatch$ActionInvocationHandler.dispatch(BroadcastDispatch.java:99)
+2026-06-21T08:45:28.8239721Z 	at org.gradle.internal.event.BroadcastDispatch$ActionInvocationHandler.dispatch(BroadcastDispatch.java:87)
+2026-06-21T08:45:28.8241691Z 	at org.gradle.internal.event.AbstractBroadcastDispatch.dispatch(AbstractBroadcastDispatch.java:44)
+2026-06-21T08:45:28.8243386Z 	at org.gradle.internal.event.BroadcastDispatch$SingletonDispatch.dispatch(BroadcastDispatch.java:268)
+2026-06-21T08:45:28.8245048Z 	at org.gradle.internal.event.BroadcastDispatch$SingletonDispatch.dispatch(BroadcastDispatch.java:170)
+2026-06-21T08:45:28.8246714Z 	at org.gradle.internal.event.AbstractBroadcastDispatch.dispatch(AbstractBroadcastDispatch.java:84)
+2026-06-21T08:45:28.8248393Z 	at org.gradle.internal.event.AbstractBroadcastDispatch.dispatch(AbstractBroadcastDispatch.java:70)
+2026-06-21T08:45:28.8250039Z 	at org.gradle.internal.event.BroadcastDispatch$CompositeDispatch.dispatch(BroadcastDispatch.java:380)
+2026-06-21T08:45:28.8251862Z 	at org.gradle.internal.event.BroadcastDispatch$CompositeDispatch.dispatch(BroadcastDispatch.java:272)
+2026-06-21T08:45:28.8253387Z 	at org.gradle.internal.event.ListenerBroadcast.dispatch(ListenerBroadcast.java:160)
+2026-06-21T08:45:28.8254785Z 	at org.gradle.internal.event.ListenerBroadcast.dispatch(ListenerBroadcast.java:37)
+2026-06-21T08:45:28.8256509Z 	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+2026-06-21T08:45:28.8258014Z 	at jdk.proxy1/jdk.proxy1.$Proxy67.afterResolve(Unknown Source)
+2026-06-21T08:45:28.8259515Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$1.call(DefaultConfiguration.java:779)
+2026-06-21T08:45:28.8261517Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$1.call(DefaultConfiguration.java:756)
+2026-06-21T08:45:28.8263842Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+2026-06-21T08:45:28.8266120Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+2026-06-21T08:45:28.8268134Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+2026-06-21T08:45:28.8269919Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8271978Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+2026-06-21T08:45:28.8273771Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8275532Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+2026-06-21T08:45:28.8277602Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveGraphInBuildOperation(DefaultConfiguration.java:756)
+2026-06-21T08:45:28.8279935Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.lambda$resolveExclusivelyIfRequired$5(DefaultConfiguration.java:748)
+2026-06-21T08:45:28.8282672Z 	at org.gradle.api.internal.project.DefaultProjectStateRegistry$CalculatedModelValueImpl.update(DefaultProjectStateRegistry.java:533)
+2026-06-21T08:45:28.8284884Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveExclusivelyIfRequired(DefaultConfiguration.java:743)
+2026-06-21T08:45:28.8311700Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.resolveGraphIfRequired(DefaultConfiguration.java:736)
+2026-06-21T08:45:28.8313676Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.access$1300(DefaultConfiguration.java:150)
+2026-06-21T08:45:28.8315841Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$ResolverResultsResolutionResultProvider.getValue(DefaultConfiguration.java:709)
+2026-06-21T08:45:28.8318207Z 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$ResolverResultsResolutionResultProvider.getValue(DefaultConfiguration.java:695)
+2026-06-21T08:45:28.8320532Z 	at org.gradle.api.internal.artifacts.configurations.ResolutionResultProvider$1.getValue(ResolutionResultProvider.java:54)
+2026-06-21T08:45:28.8323017Z 	at org.gradle.api.internal.artifacts.configurations.ResolutionResultProviderBackedSelectedArtifactSet.visitArtifacts(ResolutionResultProviderBackedSelectedArtifactSet.java:50)
+2026-06-21T08:45:28.8325618Z 	at org.gradle.api.internal.artifacts.ivyservice.resolveengine.artifact.SelectedArtifactSet.visitFiles(SelectedArtifactSet.java:34)
+2026-06-21T08:45:28.8327890Z 	at org.gradle.api.internal.artifacts.configurations.ResolutionBackedFileCollection.visitContents(ResolutionBackedFileCollection.java:75)
+2026-06-21T08:45:28.8329677Z 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+2026-06-21T08:45:28.8361774Z 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
+2026-06-21T08:45:28.8363341Z 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:67)
+2026-06-21T08:45:28.8364772Z 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:92)
+2026-06-21T08:45:28.8366617Z 	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:306)
+2026-06-21T08:45:28.8368556Z 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
+2026-06-21T08:45:28.8370384Z 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+2026-06-21T08:45:28.8397095Z 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:113)
+2026-06-21T08:45:28.8399219Z 	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
+2026-06-21T08:45:28.8401173Z 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:113)
+2026-06-21T08:45:28.8402844Z 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:360)
+2026-06-21T08:45:28.8404726Z 	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:47)
+2026-06-21T08:45:28.8406963Z 	at org.gradle.internal.execution.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:133)
+2026-06-21T08:45:28.8408878Z 	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:324)
+2026-06-21T08:45:28.8410841Z 	at org.gradle.internal.execution.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:63)
+2026-06-21T08:45:28.8413447Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(AbstractCaptureStateBeforeExecutionStep.java:109)
+2026-06-21T08:45:28.8416527Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.lambda$captureExecutionState$0(AbstractCaptureStateBeforeExecutionStep.java:74)
+2026-06-21T08:45:28.8418588Z 	at org.gradle.internal.execution.steps.BuildOperationStep$1.call(BuildOperationStep.java:37)
+2026-06-21T08:45:28.8423459Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+2026-06-21T08:45:28.8425610Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+2026-06-21T08:45:28.8427576Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+2026-06-21T08:45:28.8429334Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8431166Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+2026-06-21T08:45:28.8432863Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8434597Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+2026-06-21T08:45:28.8436257Z 	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
+2026-06-21T08:45:28.8438473Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.captureExecutionState(AbstractCaptureStateBeforeExecutionStep.java:69)
+2026-06-21T08:45:28.8441158Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:62)
+2026-06-21T08:45:28.8443608Z 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+2026-06-21T08:45:28.8445802Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+2026-06-21T08:45:28.8447811Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:56)
+2026-06-21T08:45:28.8449578Z 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+2026-06-21T08:45:28.8465922Z 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+2026-06-21T08:45:28.8468049Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+2026-06-21T08:45:28.8469982Z 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+2026-06-21T08:45:28.8472412Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+2026-06-21T08:45:28.8473956Z 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+2026-06-21T08:45:28.8475673Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+2026-06-21T08:45:28.8477389Z 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+2026-06-21T08:45:28.8479065Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+2026-06-21T08:45:28.8481017Z 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+2026-06-21T08:45:28.8482676Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+2026-06-21T08:45:28.8484173Z 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+2026-06-21T08:45:28.8486141Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+2026-06-21T08:45:28.8488550Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+2026-06-21T08:45:28.8491031Z 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+2026-06-21T08:45:28.8492795Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+2026-06-21T08:45:28.8494242Z 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+2026-06-21T08:45:28.8495603Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+2026-06-21T08:45:28.8496911Z 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+2026-06-21T08:45:28.8498367Z 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+2026-06-21T08:45:28.8500323Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+2026-06-21T08:45:28.8502418Z 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+2026-06-21T08:45:28.8504585Z 	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+2026-06-21T08:45:28.8506706Z 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+2026-06-21T08:45:28.8508759Z 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+2026-06-21T08:45:28.8510906Z 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+2026-06-21T08:45:28.8512732Z 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+2026-06-21T08:45:28.8514526Z 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+2026-06-21T08:45:28.8516296Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+2026-06-21T08:45:28.8518090Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+2026-06-21T08:45:28.8519751Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+2026-06-21T08:45:28.8521977Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+2026-06-21T08:45:28.8524203Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+2026-06-21T08:45:28.8526365Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+2026-06-21T08:45:28.8528083Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8529739Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+2026-06-21T08:45:28.8531580Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8533300Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+2026-06-21T08:45:28.8535047Z 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+2026-06-21T08:45:28.8536604Z 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+2026-06-21T08:45:28.8538402Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+2026-06-21T08:45:28.8540658Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+2026-06-21T08:45:28.8543071Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+2026-06-21T08:45:28.8544984Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+2026-06-21T08:45:28.8546934Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+2026-06-21T08:45:28.8549174Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+2026-06-21T08:45:28.8551280Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+2026-06-21T08:45:28.8552867Z 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+2026-06-21T08:45:28.8554362Z 	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
+2026-06-21T08:45:28.8556092Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:138)
+2026-06-21T08:45:28.8557883Z 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:123)
+2026-06-21T08:45:28.8559491Z 	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+2026-06-21T08:45:28.8561203Z 	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+2026-06-21T08:45:28.8562959Z 	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+2026-06-21T08:45:28.8564942Z 	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+2026-06-21T08:45:28.8567014Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+2026-06-21T08:45:28.8569138Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+2026-06-21T08:45:28.8571160Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+2026-06-21T08:45:28.8572838Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8574495Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+2026-06-21T08:45:28.8576153Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+2026-06-21T08:45:28.8578001Z 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+2026-06-21T08:45:28.8579802Z 	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+2026-06-21T08:45:28.8582019Z 	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$10(DefaultBuildLifecycleController.java:313)
+2026-06-21T08:45:28.8583766Z 	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:266)
+2026-06-21T08:45:28.8585435Z 	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$8(StateTransitionController.java:177)
+2026-06-21T08:45:28.8586963Z 	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:46)
+2026-06-21T08:45:28.8588440Z 	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:177)
+2026-06-21T08:45:28.8590285Z 	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:304)
+2026-06-21T08:45:28.8592259Z 	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+2026-06-21T08:45:28.8594261Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+2026-06-21T08:45:28.8595878Z 	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+2026-06-21T08:45:28.8597443Z 	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:181)
+2026-06-21T08:45:28.8598918Z 	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+2026-06-21T08:45:28.8600728Z 	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:198)
+2026-06-21T08:45:28.8602397Z 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+2026-06-21T08:45:28.8604014Z 	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:198)
+2026-06-21T08:45:28.8605620Z 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+2026-06-21T08:45:28.8607152Z 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+2026-06-21T08:45:28.8607883Z 
+2026-06-21T08:45:28.8607897Z 
+2026-06-21T08:45:28.8608135Z BUILD FAILED in 51s
+2026-06-21T08:45:29.2197762Z ##[error]Process completed with exit code 1.

@@ -14,8 +14,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.ui.MainViewModel
+import com.example.util.NotificationHelper
 
 @Composable
 fun ProfileScreen(viewModel: MainViewModel) {
@@ -29,12 +31,22 @@ fun ProfileScreen(viewModel: MainViewModel) {
     var name by remember { mutableStateOf(userProfile?.name ?: "") }
     var email by remember { mutableStateOf(userProfile?.email ?: "") }
     var target by remember { mutableStateOf(userProfile?.calorieTarget?.toString() ?: "1800") }
+    var breakfastTime by remember { mutableStateOf(userProfile?.breakfastTime ?: "07:00") }
+    var lunchTime by remember { mutableStateOf(userProfile?.lunchTime ?: "12:00") }
+    var dinnerTime by remember { mutableStateOf(userProfile?.dinnerTime ?: "19:00") }
+    var weightTime by remember { mutableStateOf(userProfile?.weightTime ?: "06:00") }
+    
+    val context = LocalContext.current
     
     LaunchedEffect(userProfile) {
         if (!isEditing && userProfile != null) {
             name = userProfile!!.name
             email = userProfile!!.email
             target = userProfile!!.calorieTarget.toString()
+            breakfastTime = userProfile!!.breakfastTime
+            lunchTime = userProfile!!.lunchTime
+            dinnerTime = userProfile!!.dinnerTime
+            weightTime = userProfile!!.weightTime
         }
     }
     
@@ -76,12 +88,36 @@ fun ProfileScreen(viewModel: MainViewModel) {
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         modifier = Modifier.fillMaxWidth()
                     )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text("Pengingat (Format HH:MM)", style = MaterialTheme.typography.titleSmall, modifier = Modifier.align(Alignment.Start))
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedTextField(value = breakfastTime, onValueChange = { breakfastTime = it }, label = { Text("Sarapan") }, modifier = Modifier.weight(1f))
+                        OutlinedTextField(value = lunchTime, onValueChange = { lunchTime = it }, label = { Text("Makan Siang") }, modifier = Modifier.weight(1f))
+                    }
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedTextField(value = dinnerTime, onValueChange = { dinnerTime = it }, label = { Text("Makan Malam") }, modifier = Modifier.weight(1f))
+                        OutlinedTextField(value = weightTime, onValueChange = { weightTime = it }, label = { Text("Timbang Berat") }, modifier = Modifier.weight(1f))
+                    }
                     Spacer(modifier = Modifier.height(16.dp))
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(
                             onClick = {
-                                viewModel.saveUserProfile(name, email, target.toIntOrNull() ?: 1800)
+                                viewModel.saveUserProfile(name, email, target.toIntOrNull() ?: 1800, breakfastTime, lunchTime, dinnerTime, weightTime)
                                 isEditing = false
+                                
+                                // Schedule Alarms
+                                fun schedule(time: String, reqCode: Int, title: String, msg: String) {
+                                    val parts = time.split(":")
+                                    if(parts.size == 2) {
+                                        val h = parts[0].toIntOrNull() ?: return
+                                        val m = parts[1].toIntOrNull() ?: return
+                                        NotificationHelper.scheduleDailyReminder(context, reqCode, title, msg, h, m)
+                                    }
+                                }
+                                schedule(breakfastTime, 101, "Waktunya Sarapan!", "Jangan lewatkan sarapan sehatmu.")
+                                schedule(lunchTime, 102, "Waktunya Makan Siang!", "Isi energimu untuk beraktivitas.")
+                                schedule(dinnerTime, 103, "Waktunya Makan Malam!", "Pilih menu ringan untuk malam ini.")
+                                schedule(weightTime, 104, "Waktunya Timbang!", "Catat berat badanmu hari ini.")
                             },
                             modifier = Modifier.weight(1f)
                         ) {

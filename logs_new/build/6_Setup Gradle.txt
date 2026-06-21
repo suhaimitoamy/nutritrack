@@ -1,0 +1,111 @@
+﻿2026-06-21T08:56:13.0081577Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-06-21T08:56:13.0083064Z ##[group]Run gradle/actions/setup-gradle@v4
+2026-06-21T08:56:13.0083362Z with:
+2026-06-21T08:56:13.0083567Z   gradle-version: 8.13
+2026-06-21T08:56:13.0083804Z   cache-disabled: false
+2026-06-21T08:56:13.0084045Z   cache-read-only: false
+2026-06-21T08:56:13.0084285Z   cache-write-only: false
+2026-06-21T08:56:13.0084539Z   cache-overwrite-existing: false
+2026-06-21T08:56:13.0084813Z   cache-cleanup: on-success
+2026-06-21T08:56:13.0085113Z   gradle-home-cache-includes: caches
+notifications
+
+2026-06-21T08:56:13.0085440Z   add-job-summary: always
+2026-06-21T08:56:13.0085693Z   add-job-summary-as-pr-comment: never
+2026-06-21T08:56:13.0085978Z   dependency-graph: disabled
+2026-06-21T08:56:13.0086343Z   dependency-graph-report-dir: dependency-graph-reports
+2026-06-21T08:56:13.0086709Z   dependency-graph-continue-on-failure: true
+2026-06-21T08:56:13.0087020Z   build-scan-publish: false
+2026-06-21T08:56:13.0087265Z   validate-wrappers: true
+2026-06-21T08:56:13.0087716Z   allow-snapshot-wrappers: false
+2026-06-21T08:56:13.0087999Z   gradle-home-cache-strict-match: false
+2026-06-21T08:56:13.0088282Z   workflow-job-context: null
+2026-06-21T08:56:13.0091019Z   github-token: ***
+2026-06-21T08:56:13.0091240Z env:
+2026-06-21T08:56:13.0091546Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-21T08:56:13.0092048Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.19-10/x64
+2026-06-21T08:56:13.0092652Z   ANDROID_HOME: /usr/local/lib/android/sdk
+2026-06-21T08:56:13.0092964Z   ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+2026-06-21T08:56:13.0093259Z ##[endgroup]
+2026-06-21T08:56:13.3276407Z Merged default JDK locations into /home/runner/.m2/toolchains.xml
+2026-06-21T08:56:13.3277800Z Preparing cache for cleanup.
+2026-06-21T08:56:13.3281061Z ##[group]Restore Gradle state from cache
+2026-06-21T08:56:13.5064060Z Cache hit for restore-key: gradle-home-v1|Linux-X64|build[620c74083efa5b88ef904c2356f72d31]-0d0a6b89c8e3ece002307edea88c4be8c50ed332
+2026-06-21T08:56:14.3161301Z Received 1102740 of 1102740 (100.0%), 1.8 MBs/sec
+2026-06-21T08:56:14.3162746Z Cache Size: ~1 MB (1102740 B)
+2026-06-21T08:56:14.3194018Z [command]/usr/bin/tar -xf /home/runner/work/_temp/75d75cb2-f7d5-4a01-8221-4581e28ec349/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:14.4251678Z Cache restored successfully
+2026-06-21T08:56:14.4257038Z Restored cache entry with key gradle-home-v1|Linux-X64|build[620c74083efa5b88ef904c2356f72d31]-0d01d9dd7dd5c073016bebde57b3def5c68b8014 to /home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle in 1096ms
+2026-06-21T08:56:14.6133815Z Cache hit for: gradle-generated-gradle-jars-v1-697f81ec8d80712ce7da03f513960371
+2026-06-21T08:56:14.6138918Z Cache hit for: gradle-transforms-v1-5ba6a63a2bbeb6fae684d557c51814a2
+2026-06-21T08:56:14.6143925Z Cache hit for: gradle-kotlin-dsl-v1-0dd58704d5605c81159b90c54a020660
+2026-06-21T08:56:14.6202452Z Cache hit for: gradle-generated-gradle-jars-v1-cb4b032a7d08b9bf1e84e9eacaebcc29
+2026-06-21T08:56:14.6220105Z Cache hit for: gradle-wrapper-zips-v1-df6ecc383658ce44d9cbac4d1bfd12bf
+2026-06-21T08:56:14.6237176Z Cache hit for: gradle-dependencies-v1-aaa08c0f83efd3c98668048d53a760ad
+2026-06-21T08:56:14.6245397Z Cache hit for: gradle-groovy-dsl-v1-611b76c7c33d0bed032f6ed9f7e2a95a
+2026-06-21T08:56:14.6248936Z Cache hit for: gradle-instrumented-jars-v1-6b20b1be9c249e12c023497d550e86bf
+2026-06-21T08:56:15.0700203Z Received 233363 of 233363 (100.0%), 0.9 MBs/sec
+2026-06-21T08:56:15.0700919Z Cache Size: ~0 MB (233363 B)
+2026-06-21T08:56:15.0778329Z [command]/usr/bin/tar -xf /home/runner/work/_temp/4e9fd85d-06e1-411f-8306-bc68e09e7e33/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:15.1613852Z Cache restored successfully
+2026-06-21T08:56:15.1615962Z Restored cache entry with key gradle-kotlin-dsl-v1-0dd58704d5605c81159b90c54a020660 to /home/runner/.gradle/caches/*/kotlin-dsl/accessors/*/,/home/runner/.gradle/caches/*/kotlin-dsl/scripts/*/ in 734ms
+2026-06-21T08:56:15.1766075Z Received 77080 of 77080 (100.0%), 0.2 MBs/sec
+2026-06-21T08:56:15.1766624Z Cache Size: ~0 MB (77080 B)
+2026-06-21T08:56:15.1789494Z [command]/usr/bin/tar -xf /home/runner/work/_temp/ca5207ed-5b0b-4208-8f82-711dfbe2023c/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:15.1893045Z Cache restored successfully
+2026-06-21T08:56:15.1894886Z Restored cache entry with key gradle-instrumented-jars-v1-6b20b1be9c249e12c023497d550e86bf to /home/runner/.gradle/caches/jars-*/*/ in 762ms
+2026-06-21T08:56:15.3304407Z Received 216940 of 216940 (100.0%), 0.5 MBs/sec
+2026-06-21T08:56:15.3305251Z Cache Size: ~0 MB (216940 B)
+2026-06-21T08:56:15.3350831Z [command]/usr/bin/tar -xf /home/runner/work/_temp/a219b0ea-bdb2-4d47-a7af-5a4c4d0f7b87/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:15.3693231Z Cache restored successfully
+2026-06-21T08:56:15.3694881Z Restored cache entry with key gradle-groovy-dsl-v1-611b76c7c33d0bed032f6ed9f7e2a95a to /home/runner/.gradle/caches/*/groovy-dsl/*/ in 942ms
+2026-06-21T08:56:15.6742092Z Received 29360128 of 135426090 (21.7%), 28.0 MBs/sec
+2026-06-21T08:56:15.8065815Z Received 8388608 of 40868781 (20.5%), 8.0 MBs/sec
+2026-06-21T08:56:15.8409044Z Received 12582912 of 41993402 (30.0%), 12.0 MBs/sec
+2026-06-21T08:56:15.8541022Z Received 12582912 of 221597583 (5.7%), 12.0 MBs/sec
+2026-06-21T08:56:15.8767833Z Received 8388608 of 257877825 (3.3%), 8.0 MBs/sec
+2026-06-21T08:56:15.9758469Z Received 40868781 of 40868781 (100.0%), 33.3 MBs/sec
+2026-06-21T08:56:15.9760363Z Cache Size: ~39 MB (40868781 B)
+2026-06-21T08:56:16.0396503Z [command]/usr/bin/tar -xf /home/runner/work/_temp/d92275e3-1b52-4689-a03b-f96135c41f7a/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:16.4304836Z Cache restored successfully
+2026-06-21T08:56:16.4413462Z Restored cache entry with key gradle-generated-gradle-jars-v1-697f81ec8d80712ce7da03f513960371 to /home/runner/.gradle/caches/8.13/generated-gradle-jars/gradle-api-8.13.jar in 2014ms
+2026-06-21T08:56:16.6317943Z Received 41993402 of 41993402 (100.0%), 22.4 MBs/sec
+2026-06-21T08:56:16.6320764Z Cache Size: ~40 MB (41993402 B)
+2026-06-21T08:56:16.6406527Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f2b24595-e4ae-4145-8e59-1cb981ff763e/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:16.6846761Z Received 130023424 of 135426090 (96.0%), 61.7 MBs/sec
+2026-06-21T08:56:16.8604196Z Received 130023424 of 221597583 (58.7%), 61.8 MBs/sec
+2026-06-21T08:56:16.9046700Z Received 125829120 of 257877825 (48.8%), 59.2 MBs/sec
+2026-06-21T08:56:17.0043559Z Cache restored successfully
+2026-06-21T08:56:17.0057560Z Restored cache entry with key gradle-generated-gradle-jars-v1-cb4b032a7d08b9bf1e84e9eacaebcc29 to /home/runner/.gradle/caches/9.3.1/generated-gradle-jars/gradle-api-9.3.1.jar in 2579ms
+2026-06-21T08:56:17.0897069Z Received 135426090 of 135426090 (100.0%), 53.5 MBs/sec
+2026-06-21T08:56:17.0897878Z Cache Size: ~129 MB (135426090 B)
+2026-06-21T08:56:17.1155908Z [command]/usr/bin/tar -xf /home/runner/work/_temp/361a6d00-9235-4349-9aff-fe96eb015a45/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:17.4013761Z Cache restored successfully
+2026-06-21T08:56:17.4205892Z Restored cache entry with key gradle-wrapper-zips-v1-df6ecc383658ce44d9cbac4d1bfd12bf to /home/runner/.gradle/wrapper/dists/gradle-8.9-bin/90cnw93cvbtalezasaz0blq0a in 2994ms
+2026-06-21T08:56:17.5807736Z Received 221597583 of 221597583 (100.0%), 77.5 MBs/sec
+2026-06-21T08:56:17.5809865Z Cache Size: ~211 MB (221597583 B)
+2026-06-21T08:56:17.5887966Z [command]/usr/bin/tar -xf /home/runner/work/_temp/2d80bd03-7768-494d-ba60-7822ce298f27/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:17.8609359Z Received 257877825 of 257877825 (100.0%), 82.4 MBs/sec
+2026-06-21T08:56:17.8610758Z Cache Size: ~246 MB (257877825 B)
+2026-06-21T08:56:17.8936466Z [command]/usr/bin/tar -xf /home/runner/work/_temp/58f25b94-46a8-4880-98c8-3e2c7b57814d/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:18.9153319Z Cache restored successfully
+2026-06-21T08:56:18.9310373Z Restored cache entry with key gradle-dependencies-v1-aaa08c0f83efd3c98668048d53a760ad to /home/runner/.gradle/caches/modules-*/files-*/*/*/*/* in 4503ms
+2026-06-21T08:56:20.4221450Z Cache restored successfully
+2026-06-21T08:56:20.4325499Z Restored cache entry with key gradle-transforms-v1-5ba6a63a2bbeb6fae684d557c51814a2 to /home/runner/.gradle/caches/transforms-4/*/,/home/runner/.gradle/caches/*/transforms/*/ in 6004ms
+2026-06-21T08:56:20.4636306Z ##[endgroup]
+2026-06-21T08:56:20.4727019Z ##[group]All Gradle Wrapper jars are valid
+2026-06-21T08:56:20.4728475Z ✓ Found known Gradle Wrapper JAR files:
+2026-06-21T08:56:20.4729668Z   497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7 gradle/wrapper/gradle-wrapper.jar
+2026-06-21T08:56:20.4730447Z ##[endgroup]
+2026-06-21T08:56:20.6565051Z ##[group]Provision Gradle 8.13
+2026-06-21T08:56:24.5268462Z Cache hit for: gradle-8.13
+2026-06-21T08:56:25.5755744Z Received 130023424 of 136904052 (95.0%), 123.9 MBs/sec
+2026-06-21T08:56:25.7514072Z Received 136904052 of 136904052 (100.0%), 110.9 MBs/sec
+2026-06-21T08:56:25.7521760Z Cache Size: ~131 MB (136904052 B)
+2026-06-21T08:56:25.7691334Z [command]/usr/bin/tar -xf /home/runner/work/_temp/96f34e8a-da82-4642-bff7-a6b23683321f/cache.tzst -P -C /home/runner/work/nutritrack/nutritrack --use-compress-program unzstd
+2026-06-21T08:56:25.9448290Z Cache restored successfully
+2026-06-21T08:56:25.9514961Z Restored Gradle distribution gradle-8.13 from cache to /home/runner/work/_temp/.gradle-actions/gradle-installations/downloads/gradle-8.13-bin.zip
+2026-06-21T08:56:25.9533531Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/.gradle-actions/gradle-installations/downloads/gradle-8.13-bin.zip
+2026-06-21T08:56:27.0356220Z Extracted Gradle 8.13 to /home/runner/work/_temp/.gradle-actions/gradle-installations/installs/gradle-8.13
+2026-06-21T08:56:27.0358143Z Provisioned Gradle executable /home/runner/work/_temp/.gradle-actions/gradle-installations/installs/gradle-8.13/bin/gradle
+2026-06-21T08:56:27.0359573Z ##[endgroup]
