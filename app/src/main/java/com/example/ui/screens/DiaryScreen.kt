@@ -163,7 +163,11 @@ fun DiaryScreen(viewModel: MainViewModel) {
                             Text("$totalWater ml / 2000 ml", style = MaterialTheme.typography.bodySmall)
                         }
                         Spacer(modifier = Modifier.weight(1f))
-                        Button(onClick = { viewModel.insertWater(250) }) {
+                        val context = LocalContext.current
+                        Button(onClick = { 
+                            viewModel.insertWater(250)
+                            android.widget.Toast.makeText(context, "+250ml Air Ditambahkan!", android.widget.Toast.LENGTH_SHORT).show()
+                        }) {
                             Text("+250ml")
                         }
                     }
