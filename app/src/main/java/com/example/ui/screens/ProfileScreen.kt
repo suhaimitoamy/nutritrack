@@ -28,6 +28,8 @@ fun ProfileScreen(viewModel: MainViewModel) {
     
     var isEditing by remember { mutableStateOf(false) }
     
+    var name by remember { mutableStateOf(userProfile?.name ?: "") }
+    var email by remember { mutableStateOf(userProfile?.email ?: "") }
     var target by remember { mutableStateOf(userProfile?.calorieTarget?.toString() ?: "1800") }
     var breakfastTime by remember { mutableStateOf(userProfile?.breakfastTime ?: "07:00") }
     var lunchTime by remember { mutableStateOf(userProfile?.lunchTime ?: "12:00") }
