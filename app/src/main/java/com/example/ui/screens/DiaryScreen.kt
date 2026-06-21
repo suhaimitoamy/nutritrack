@@ -9,6 +9,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -35,20 +38,28 @@ fun DiaryScreen(viewModel: MainViewModel) {
 
     var showAddDialog by remember { mutableStateOf(false) }
     var selectedCategory by remember { mutableStateOf("") }
+    var foodToEdit by remember { mutableStateOf<FoodEntry?>(null) }
     
     val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     
     Column(modifier = Modifier.fillMaxSize()) {
-        // Date Selector - Simplistic
+        // Date Selector - Interaktif
         Row(
             modifier = Modifier.fillMaxWidth().padding(16.dp),
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
+            IconButton(onClick = { viewModel.previousDay() }) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "Hari Sebelumnya")
+            }
             Text(
-                text = "Hari ini: $date",
+                text = "$date",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
+            IconButton(onClick = { viewModel.nextDay() }) {
+                Icon(Icons.Default.ArrowForward, contentDescription = "Hari Berikutnya")
+            }
         }
         
         // Summary Card
@@ -93,7 +104,13 @@ fun DiaryScreen(viewModel: MainViewModel) {
                     title = category,
                     foods = categoryFoods,
                     onAddClick = {
+                        foodToEdit = null
                         selectedCategory = category
+                        showAddDialog = true
+                    },
+                    onEdit = { food ->
+                        foodToEdit = food
+                        selectedCategory = food.category
                         showAddDialog = true
                     },
                     onDelete = { viewModel.deleteFood(it.id) }
@@ -106,9 +123,10 @@ fun DiaryScreen(viewModel: MainViewModel) {
     if (showAddDialog) {
         AddFoodDialog(
             category = selectedCategory,
+            editFood = foodToEdit,
             onDismiss = { showAddDialog = false },
-            onSave = { name, portions, calories, protein, carbs, fat ->
-                viewModel.insertFood(name, selectedCategory, portions, calories, protein, carbs, fat)
+            onSave = { id, name, portions, calories, protein, carbs, fat ->
+                viewModel.insertFood(id, name, selectedCategory, portions, calories, protein, carbs, fat)
                 showAddDialog = false
             }
         )
@@ -116,7 +134,7 @@ fun DiaryScreen(viewModel: MainViewModel) {
 }
 
 @Composable
-fun CategorySection(title: String, foods: List<FoodEntry>, onAddClick: () -> Unit, onDelete: (FoodEntry) -> Unit) {
+fun CategorySection(title: String, foods: List<FoodEntry>, onAddClick: () -> Unit, onEdit: (FoodEntry) -> Unit, onDelete: (FoodEntry) -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -148,8 +166,13 @@ fun CategorySection(title: String, foods: List<FoodEntry>, onAddClick: () -> Uni
                             Text("${food.portions} porsi | P:${food.protein} K:${food.carbs} L:${food.fat}", color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall)
                         }
                         Text("${food.calories} kkal", fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(end = 8.dp))
-                        IconButton(onClick = { onDelete(food) }) {
-                            Icon(Icons.Default.Delete, contentDescription = "Hapus", tint = MaterialTheme.colorScheme.error)
+                        Row {
+                            IconButton(onClick = { onEdit(food) }) {
+                                Icon(Icons.Default.Edit, contentDescription = "Edit", tint = MaterialTheme.colorScheme.primary)
+                            }
+                            IconButton(onClick = { onDelete(food) }) {
+                                Icon(Icons.Default.Delete, contentDescription = "Hapus", tint = MaterialTheme.colorScheme.error)
+                            }
                         }
                     }
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -160,13 +183,13 @@ fun CategorySection(title: String, foods: List<FoodEntry>, onAddClick: () -> Uni
 }
 
 @Composable
-fun AddFoodDialog(category: String, onDismiss: () -> Unit, onSave: (String, Float, Int, Float, Float, Float) -> Unit) {
-    var name by remember { mutableStateOf("") }
-    var portions by remember { mutableStateOf("1") }
-    var calories by remember { mutableStateOf("") }
-    var protein by remember { mutableStateOf("0") }
-    var carbs by remember { mutableStateOf("0") }
-    var fat by remember { mutableStateOf("0") }
+fun AddFoodDialog(category: String, editFood: FoodEntry? = null, onDismiss: () -> Unit, onSave: (Int, String, Float, Int, Float, Float, Float) -> Unit) {
+    var name by remember(editFood) { mutableStateOf(editFood?.name ?: "") }
+    var portions by remember(editFood) { mutableStateOf(editFood?.portions?.toString() ?: "1") }
+    var calories by remember(editFood) { mutableStateOf(editFood?.calories?.toString() ?: "") }
+    var protein by remember(editFood) { mutableStateOf(editFood?.protein?.toString() ?: "0") }
+    var carbs by remember(editFood) { mutableStateOf(editFood?.carbs?.toString() ?: "0") }
+    var fat by remember(editFood) { mutableStateOf(editFood?.fat?.toString() ?: "0") }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -228,7 +251,7 @@ fun AddFoodDialog(category: String, onDismiss: () -> Unit, onSave: (String, Floa
                 val cr = carbs.toFloatOrNull() ?: 0f
                 val f = fat.toFloatOrNull() ?: 0f
                 if (name.isNotBlank()) {
-                    onSave(name, p, c, pr, cr, f)
+                    onSave(editFood?.id ?: 0, name, p, c, pr, cr, f)
                 }
             }) {
                 Text("Simpan")

@@ -21,16 +21,32 @@ fun ReportScreen(viewModel: MainViewModel) {
     val userProfile by viewModel.userProfile.collectAsStateWithLifecycle()
     val targetCalories = userProfile?.calorieTarget ?: 1800
     
+    val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+    val today = java.util.Date()
+    val calendar = java.util.Calendar.getInstance()
+    calendar.time = today
+    calendar.add(java.util.Calendar.DAY_OF_YEAR, -6)
+    val sevenDaysAgo = calendar.time
+
+    val foodsLast7Days = foods.filter { 
+        val foodDate = dateFormat.parse(it.dateString) ?: today
+        !foodDate.before(sevenDaysAgo)
+    }
+
     // Simple grouped stats
-    val foodsByDate = foods.groupBy { it.dateString }
+    val foodsByDate = foodsLast7Days.groupBy { it.dateString }
     val avgCalories = if (foodsByDate.isNotEmpty()) {
-        foods.sumOf { it.calories } / foodsByDate.size
+        foodsLast7Days.sumOf { it.calories } / foodsByDate.size
     } else 0
     
-    val totalBreakfast = foods.filter { it.category == "Makan Pagi" }.sumOf { it.calories }
-    val totalLunch = foods.filter { it.category == "Makan Siang" }.sumOf { it.calories }
-    val totalDinner = foods.filter { it.category == "Makan Malam" }.sumOf { it.calories }
-    val totalSnack = foods.filter { it.category == "Camilan/Lainnya" }.sumOf { it.calories }
+    val totalBreakfast = foodsLast7Days.filter { it.category == "Makan Pagi" }.sumOf { it.calories }
+    val totalLunch = foodsLast7Days.filter { it.category == "Makan Siang" }.sumOf { it.calories }
+    val totalDinner = foodsLast7Days.filter { it.category == "Makan Malam" }.sumOf { it.calories }
+    val totalSnack = foodsLast7Days.filter { it.category == "Camilan/Lainnya" }.sumOf { it.calories }
+    
+    val dailyTotals = foodsLast7Days.groupBy { it.dateString }.mapValues { entry ->
+        entry.value.sumOf { it.calories }
+    }
     
     Column(
         modifier = Modifier
@@ -59,7 +75,7 @@ fun ReportScreen(viewModel: MainViewModel) {
                 }
                 
                 Spacer(modifier = Modifier.height(24.dp))
-                Text("Rincian Kategori (Semua Waktu)", fontWeight = FontWeight.Bold)
+                Text("Rincian Kategori (7 Hari Terakhir)", fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(8.dp))
                 
                 CategoryStatRow("Makan Pagi", totalBreakfast, Color(0xFFFFA726))
@@ -70,7 +86,51 @@ fun ReportScreen(viewModel: MainViewModel) {
         }
         
         Spacer(modifier = Modifier.height(24.dp))
-        Text("Semua Makanan Dikonsumsi", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Text("Grafik 7 Hari Terakhir", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+        
+        Card(
+            modifier = Modifier.fillMaxWidth().height(150.dp),
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxSize().padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.Bottom
+            ) {
+                val maxCal = dailyTotals.values.maxOrNull()?.coerceAtLeast(1) ?: 1
+                val last7DaysStrings = (0..6).map { i ->
+                    val c = java.util.Calendar.getInstance()
+                    c.time = today
+                    c.add(java.util.Calendar.DAY_OF_YEAR, -6 + i)
+                    dateFormat.format(c.time)
+                }
+                
+                last7DaysStrings.forEach { dateStr ->
+                    val cals = dailyTotals[dateStr] ?: 0
+                    val heightRatio = cals.toFloat() / maxCal.toFloat()
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Bottom,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth(0.6f)
+                                .fillMaxHeight(heightRatio.coerceAtLeast(0.05f))
+                                .background(MaterialTheme.colorScheme.primary, RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(dateStr.takeLast(2), style = MaterialTheme.typography.labelSmall)
+                    }
+                }
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(24.dp))
+        Text("Makanan 7 Hari Terakhir", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
         
         Card(
@@ -80,7 +140,7 @@ fun ReportScreen(viewModel: MainViewModel) {
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(foods) { food ->
+                items(foodsLast7Days) { food ->
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(16.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,

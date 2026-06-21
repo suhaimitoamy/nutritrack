@@ -63,6 +63,46 @@ fun WeightScreen(viewModel: MainViewModel) {
         }
         
         Spacer(modifier = Modifier.height(24.dp))
+        Text("Grafik Berat Badan", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(8.dp))
+
+        if (weights.isNotEmpty()) {
+            Card(
+                modifier = Modifier.fillMaxWidth().height(150.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    val reversedWeights = weights.take(10).reversed()
+                    val maxWeight = reversedWeights.maxOfOrNull { it.weightKg }?.coerceAtLeast(1f) ?: 1f
+                    
+                    reversedWeights.forEach { entry ->
+                        val heightRatio = entry.weightKg / maxWeight
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Bottom,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth(0.5f)
+                                    .fillMaxHeight(heightRatio.coerceAtLeast(0.05f))
+                                    .background(MaterialTheme.colorScheme.tertiary, RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(entry.dateString.takeLast(2), style = MaterialTheme.typography.labelSmall)
+                        }
+                    }
+                }
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(24.dp))
         Text("Riwayat Berat Badan", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(8.dp))
         

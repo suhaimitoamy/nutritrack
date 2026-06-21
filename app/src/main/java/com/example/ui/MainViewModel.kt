@@ -56,10 +56,11 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
         }
     }
 
-    fun insertFood(name: String, category: String, portions: Float, calories: Int, protein: Float, carbs: Float, fat: Float) {
+    fun insertFood(id: Int = 0, name: String, category: String, portions: Float, calories: Int, protein: Float, carbs: Float, fat: Float) {
         viewModelScope.launch {
             repository.insertFood(
                 FoodEntry(
+                    id = id,
                     name = name,
                     category = category,
                     portions = portions,
@@ -71,6 +72,20 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
                 )
             )
         }
+    }
+
+    fun previousDay() {
+        val cal = java.util.Calendar.getInstance()
+        cal.time = dateFormat.parse(_currentDate.value) ?: Date()
+        cal.add(java.util.Calendar.DAY_OF_YEAR, -1)
+        _currentDate.value = dateFormat.format(cal.time)
+    }
+
+    fun nextDay() {
+        val cal = java.util.Calendar.getInstance()
+        cal.time = dateFormat.parse(_currentDate.value) ?: Date()
+        cal.add(java.util.Calendar.DAY_OF_YEAR, 1)
+        _currentDate.value = dateFormat.format(cal.time)
     }
 
     fun deleteFood(id: Int) {
